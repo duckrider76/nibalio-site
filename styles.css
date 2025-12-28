@@ -1,0 +1,123 @@
+ 
+/* styles.css - layout e look */
+/* Reset minimale */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+
+/* Body base: scuro (non totalmente nero) come richiesto */
+body{
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #eee;
+  background: #111214; /* grigio-nero scuro */
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  min-height:300vh; /* abbastanza spazio per scorrere e vedere l'effetto */
+}
+
+/* Layer di background fisso */
+.bg-base{
+  position:fixed; inset:0; z-index:-2;
+  background: linear-gradient(180deg, #111214 0%, #0f1011 100%);
+}
+
+.bg-overlay{
+  position:fixed; inset:0; z-index:-1;
+  background-image: url('texture.jpg');
+  background-repeat: repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: 0; /* parte trasparente */
+  transition: opacity 350ms ease-out; /* transizione morbida */
+  pointer-events:none;
+  filter: contrast(1.05) saturate(0.9);
+}
+
+/* Header - logo in alto a sinistra */
+.site-header{
+  position:fixed;
+  left:18px;
+  top:14px;
+  z-index:40;
+  display:flex; align-items:center;
+  gap:12px;
+}
+
+.brand img{
+  display:block;
+  height:46px; /* regola se vuoi più grande/piccolo */
+  width:auto;
+  image-rendering:optimizeQuality;
+  filter: drop-shadow(0 3px 8px rgba(0,0,0,0.6));
+  border-radius:6px;
+  background: rgba(255,255,255,0.02);
+  padding:4px;
+}
+
+/* Main content */
+main{
+  max-width:980px;
+  margin:0 auto;
+  padding:120px 24px 80px;
+}
+
+/* Hero grande */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:24px;
+  flex-direction:column;
+  padding-top:30vh;
+  text-align:left;
+}
+
+.hero h1{
+  font-size:64px;
+  letter-spacing:-2px;
+  color:#fff;
+  text-shadow: 0 6px 22px rgba(0,0,0,0.6);
+}
+
+.hero p{
+  font-size:18px;
+  color:#d9d9d9;
+  max-width:720px;
+}
+
+/* Sezioni di contenuto */
+.content{
+  margin:80px 0;
+  padding:36px;
+  border-radius:10px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  box-shadow: 0 6px 30px rgba(0,0,0,0.55);
+}
+
+.content h2{ margin-bottom:10px; font-size:28px; color:#fff; }
+.content p{ color:#ddd; font-size:16px; }
+
+.content.dark{
+  background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(255,255,255,0.02));
+}
+
+/* Footer */
+.site-footer{
+  margin-top:40px;
+  padding:40px 0;
+  text-align:center;
+  color:#bdbdbd;
+  opacity:0.9;
+}
+
+/* Small screens adjustments */
+@media (max-width:600px){
+  .hero h1{ font-size:40px }
+  .brand img{ height:38px }
+  main{ padding:110px 14px 60px }
+}
+
+/* Supporto a utenti con prefer-reduced-motion */
+@media (prefers-reduced-motion: reduce){
+  .bg-overlay{ transition: none !important; }
+}
