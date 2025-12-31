@@ -22,7 +22,7 @@ body{
 
 .bg-overlay{
   position:fixed; inset:0; z-index:-1;
-  background-image: url('texture.jpg');
+  background-image: url('texture2.jpg');
   background-repeat: repeat;
   background-size: cover;
   background-position: center;
